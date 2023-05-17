@@ -1,0 +1,20 @@
+ build-and-upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      
+    
+      
+      - name: Build 
+        run: |
+          cd client
+          go build fcdn.go
+      
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: ubuntu-x86_64 build
+          path: |
+            ./server
+            ./client/fcdn
